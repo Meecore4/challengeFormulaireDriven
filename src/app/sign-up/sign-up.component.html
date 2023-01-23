@@ -1,0 +1,55 @@
+
+
+
+<div id="formulaire">
+
+    <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+        <!-- <div>
+          Form submitted ? {{myForm.submitted}}
+          Form valid ? {{myForm.valid}}
+          Form invalid ? {{myForm.invalid}}
+        </div>
+       -->
+        <fieldset>
+          <label for="firstname">Firstname</label>
+          <input id="firstname" name="firstname" type="text" [(ngModel)]="model.firstname" #firstname="ngModel" required minlength="3" maxlength="15"/>
+        </fieldset>
+      
+    
+        <div *ngIf="firstname.errors && submited">
+          <span *ngIf="firstname.errors ['required']">Le firstname est requis</span>
+          <span *ngIf="firstname.errors ['minlength']">Le firstname doit comporter au moins 3 caractères.</span>
+          <span *ngIf="firstname.errors ['maxlength']">Le firstname ne doit pas dépasser 15 caractères.</span>
+        </div>
+      
+      
+        <fieldset>
+          <label for="lastname">Lastname</label>
+          <input id="lastname" name="lastname" [(ngModel)]="model.lastname" #lastname="ngModel" type="text" required>
+        </fieldset>
+
+        
+        <div *ngIf="lastname.errors && submited">
+            <span *ngIf="lastname.errors ['required']">Le lastname est requis</span>
+            <span *ngIf="lastname.errors ['minlength']">Le lastname doit comporter au moins 3 caractères.</span>
+            <span *ngIf="lastname.errors ['maxlength']">Le lastname ne doit pas dépasser 15 caractères.</span>
+          </div>
+      
+      
+        <fieldset>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" [(ngModel)]="model.email" #email="ngModel" required email>
+        </fieldset>
+      
+    
+        <div *ngIf="email.errors && submited">
+          <span *ngIf="email.errors['required']">L'email est invalide</span>
+          <span *ngIf="email.errors['email']">L'adresse email doit être valide</span>
+
+        </div>
+      
+      
+    
+        <button type="submit">Sauvegarder</button>
+      </form>
+</div>
