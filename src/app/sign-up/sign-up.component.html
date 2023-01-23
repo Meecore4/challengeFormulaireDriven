@@ -48,6 +48,13 @@
 
         </div>
       
+        <fieldset>
+          <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Entre ton mot de passe" [(ngModel)]="model.password" required #passwordInput="ngModel"><br>
+        </fieldset>
+        <div *ngIf="myForm.submitted">
+          <p *ngIf="passwordInput.errors?.['required']">Le mot de passe est requis</p>
+        </div>
       
     
         <button type="submit">Sauvegarder</button>
